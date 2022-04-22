@@ -24,17 +24,17 @@ if(err) throw err;
 console.log('Connected to MongoDB!!!')
 });
 
-/*
+
 // Passport Config
 require('./config/passport')(passport);
 
-let gfs;
-mongoose.connection.once("open", () => {
-  // init stream
-  gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
-    bucketName: "uploads"
-  });
-});
+//let gfs;
+// mongoose.connection.once("open", () => {
+//   // init stream
+//   gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+//     bucketName: "uploads"
+//   });
+// });
 
 
 //setting up template engine
@@ -74,29 +74,29 @@ app.use(function(req, res, next) {
 app.use(express.static('public'));
 
 //image route
-/*
-app.get("/image/:filename", (req, res) => {
 
-  const file = gfs
-    .find({
-      filename: req.params.filename
-    })
-    .toArray((err, files) => {
-      if (!files || files.length === 0) {
-        return res.status(404).json({
-          err: "no files exist"
-        });
-      }
-      gfs.openDownloadStreamByName(req.params.filename).pipe(res);
-    });
-});
+// app.get("/image/:filename", (req, res) => {
 
-*/
+//   const file = gfs
+//     .find({
+//       filename: req.params.filename
+//     })
+//     .toArray((err, files) => {
+//       if (!files || files.length === 0) {
+//         return res.status(404).json({
+//           err: "no files exist"
+//         });
+//       }
+//       gfs.openDownloadStreamByName(req.params.filename).pipe(res);
+//     });
+// });
+
+
 
 
 // Connecting Routes
 //any request coming will be redirected to routes's auth
-//app.use("/", require('./routes/index'));
+app.use("/", require('./routes/index'));
 
 
 
