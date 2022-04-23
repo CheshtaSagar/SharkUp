@@ -168,7 +168,7 @@ router.get("/entrepreneurProfile", function (req, res) {
       //if user logs in for the first time,redirect him to edit profile section
       res.redirect("/profileDetails/entrepreneurProfileDetails");
     else
-      res.render("entrepreneurProfile", {
+      res.render("entrepreneurDashboard", {
         user: req.user,
         
       });
@@ -187,7 +187,7 @@ router.get("/investorProfile", (req, res) => {
       //if user logs in for the first time,redirect him to edit profile section
       res.redirect("/profileDetails/investorProfileDetails");
     else
-      res.render("investorProfile", {
+      res.render("investorDashboard", {
         user: req.user,
         
       });
