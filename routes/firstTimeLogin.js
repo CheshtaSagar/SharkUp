@@ -14,17 +14,17 @@ const crypto = require("crypto"); //to generate file names
 // const Grid = require("gridfs-stream");
 const methodOverride = require("method-override");
 var auth = require('../config/auth');
-var isDeveloper = auth.isDeveloper;
-var isCompany = auth.isCompany;
 var isUser = auth.isUser;
 
-
+/*
 //first time login
 router.get("/firstLogin", function (req, res) {
     res.render("firstLogin");
   });
+*/
 
 
+/*
  //login handling
 router.post("/firstLogin", (req, res, next) => {
     passport.authenticate("local", {
@@ -33,8 +33,9 @@ router.post("/firstLogin", (req, res, next) => {
       failureFlash: true,
     })(req, res, next);
   });
+*/
 
-
+/*
 router.get("/firstTimeProfile", (req, res) => {
     if(req.user.userType=="investor")
     res.redirect("/profileDetails/investorProfileDetails");
@@ -43,5 +44,5 @@ router.get("/firstTimeProfile", (req, res) => {
     }
   });  
 
-
+*/
 module.exports = router;

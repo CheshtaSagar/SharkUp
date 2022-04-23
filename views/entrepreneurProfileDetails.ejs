@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/register.css" type="text/css">
+    <script src="https://cdn.tiny.cloud/1/fkuf7632wiheheudqyjx3m3c68smfga50n37zcgqzmtdiwx3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <title>Complete your profile
+    </title>
+</head>
+
+
+<body>
+    <!--importing navbar-->
+
+    <%- include ('partials/nav') %>
+
+
+        <!--edit profile page design starts here-->
+        <div class="register__body">
+            <div class="container-fluid">
+               
+                <div class="row" id="chat-botCard">
+
+                     <!---importing msgs column-->
+                <div style="width:250px;  position:fixed; top:12%; right:0;z-index:2" >
+                    <%- include ('partials/messages') %> 
+                </div>
+
+                
+                    <div class="col-12 col-lg-6 col-md-12 col-sm-12"
+                        style="padding-top: 5px; padding-bottom: 5px; background-color:rgb(255, 255, 255);">
+
+                        <!----register form-->
+                        <div class="bg" id="col1">
+                            </br>
+                            <h3 class="text-center mb-3">
+                                <i class="fas fa-user-plus"></i> Complete your profile
+                            </h3>
+                            <div class="signup-form " style="overflow: auto;">
+
+                                <form action="/profileDetails/entrepreneurProfileDetails" method="POST"
+                                                                            enctype="multipart/form-data">
+
+                              
+
+                                        <!--username-->
+                                        <div class="form-group">
+                                            <input type="text" class="form-control input-lg" id="name"
+                                                name="name" placeholder="Name"/>
+                                        </div>
+
+                                        <!--email-->
+                                        <div class="form-group">
+                                            <input type="email" class="form-control input-lg" id="email" name="email"
+                                                placeholder="Email Address"
+                                                value="<%= typeof email != 'undefined' ? email : user.email %>"
+                                                readonly />
+                                        </div>
+
+                                        </br>
+                                        <hr style="width:50%; background-color:rgb(114, 15, 180)">
+                                        </hr>
+
+                                        <div class="form-group">
+                                            <input type="aadhar" class="form-control input-lg" id="aadhar" name="aadhar"
+                                                placeholder="Aadhar Card Number"
+                                                
+                                                />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="PAN" class="form-control input-lg" id="pan" name="pan"
+                                                placeholder="PAN (Permanent Account Number)"
+                                                
+                                                />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="website" class="form-control input-lg" id="website" name="website"
+                                                placeholder="website"
+                                                
+                                                />
+                                        </div>
+
+                                        <!----Add Bio-->
+                                        <div class="form-group">
+                                            <label for="bio">Bio</label>
+                                            <textarea class="form-control ta editor" id="bio" rows="6"
+                                                placeholder=" " name="bio"
+                                                ></textarea>
+                                        </div>
+
+                                        
+
+                                        <div class="custom-file">
+                                            <h6>Upload your Display Picture</h6>
+                                            <input type="file" data-file_types="jpg|jpeg|png" class="custom-file-input"
+                                                id="file" name="file" onchange="readSingleFile(this.files)">
+                                            <label class="custom-file-label" id="file-label" style="border-radius:10px;"
+                                                for="file">Choose
+                                                profile picture</label>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-lg btn-block signup-btn">Submit</button>
+                                        </div>
+                                </form>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    
+                    <div class="col-12 col-lg-6 col-md-12 col-sm-12"
+                    style="padding-top: 5px; padding-bottom: 5px; background-color:rgb(255, 234, 255);">
+
+
+                    <div class="bg" id="col1">
+                        </br>
+                    
+
+                    </div>
+
+
+                </div>
+
+        
+
+
+
+        <%- include ('partials/footer') %>
+
+
+
+</body>
+<!-------->
+<script>
+    //script for changing "choose file" to file name
+    function readSingleFile(e) {
+        const name = e[0].name;
+        document.getElementById("file-label").textContent = name;
+    }
+
+   
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+
+
+</html>

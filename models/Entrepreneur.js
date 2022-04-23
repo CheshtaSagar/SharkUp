@@ -1,37 +1,57 @@
-// //User Schema
+//User Schema
 
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// const EntrepreneurSchema = new mongoose.Schema({
-//     name: {
-//         type: String,
-//         required: true
-//       },
-    
-     
-    
-//       website: {
-//         type: String
-//       },
-    
-//       photo: {
-//         type: String
-//       },
-    
-//       bio: {
-//         type: String
-//       },
-    
-//       address: {
-//         type: String
-//       },
-    
-//     //   backedProjects: [{
-//     //     type: _mongoose2.default.Schema.Types.ObjectId,
-//     //     ref: 'Project'
-//     //   }],
-// });
+const EntrepreneurSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+      },
+    userDetails:
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'User'
+    },
+    email:
+    {
+      type:String,
+    },
+    rating:
+    {
+     type:Number,
+     default:2,
+    },
+    displayPicture:
+    {
+        image:{
+           type: String,
+        },
+        cloudinary_id:{
+           type:String,
+        }
+    },
 
-// const User = mongoose.model("Entrepreneur", EntrepreneurSchema);
+    aadhar:{
+      type: String,
+      required: true,
+    },
+    pan:{
+      type: String,
+    },
+    bio:{
+      type: String,
+    },
+    
+      website: {
+        type: String
+      },
+    
+    //   backedProjects: [{
+    //     type: _mongoose2.default.Schema.Types.ObjectId,
+    //     ref: 'Project'
+    //   }],
+});
 
-// module.exports = Entrepreneur;
+const Entrepreneur = mongoose.model("Entrepreneur", EntrepreneurSchema);
+
+module.exports = Entrepreneur;
