@@ -3,35 +3,39 @@
 const mongoose = require("mongoose");
 
 const EntrepreneurSchema = new mongoose.Schema({
-  userDetails:
+    name: {
+        type: String,
+        required: true
+      },
+    userDetails:
     {
-        type: mongoose.Schema.Types.ObjectId,
-         ref:'User'
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'User'
     },
-  email: {
-    type: String,
-    required: true,
-  },
-  userType: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-  resetToken: {
-    type: String,
-  },
-  tokenExpires: {
-    type: Date,
-  },
+     
+    
+      website: {
+        type: String
+      },
+    
+      photo: {
+        type: String
+      },
+    
+      bio: {
+        type: String
+      },
+    
+      address: {
+        type: String
+      },
+    
+    //   backedProjects: [{
+    //     type: _mongoose2.default.Schema.Types.ObjectId,
+    //     ref: 'Project'
+    //   }],
 });
 
-const Entrepreneur = mongoose.model("Entrepreneur", EntrepreneurSchema);
+const User = mongoose.model("Entrepreneur", EntrepreneurSchema);
 
 module.exports = Entrepreneur;
