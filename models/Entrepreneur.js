@@ -44,8 +44,7 @@ const EntrepreneurSchema = new mongoose.Schema({
     
       website: {
         type: String
-      },
-    
+      }
     //   backedProjects: [{
     //     type: _mongoose2.default.Schema.Types.ObjectId,
     //     ref: 'Project'
