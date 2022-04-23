@@ -10,7 +10,7 @@ const path= require('path');
 const session = require('express-session');
 //const multer=require('multer');
 //const {GridFsStorage}=require('multer-gridfs-storage');
-//const Grid=require('gridfs-stream');
+//const Grid=require('gridfs-stream');j
 const methodOverride=require('method-override');
 require('dotenv').config();
 
@@ -28,13 +28,14 @@ console.log('Connected to MongoDB!!!')
 // Passport Config
 require('./config/passport')(passport);
 
+
 //let gfs;
-// mongoose.connection.once("open", () => {
-//   // init stream
-//   gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
-//     bucketName: "uploads"
-//   });
-// });
+//mongoose.connection.once("open", () => {
+  // init stream
+ // gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+ //   bucketName: "uploads"
+ // });
+//});
 
 
 //setting up template engine
@@ -74,31 +75,31 @@ app.use(function(req, res, next) {
 app.use(express.static('public'));
 
 //image route
+/*
+app.get("/image/:filename", (req, res) => {
 
-// app.get("/image/:filename", (req, res) => {
+  const file = gfs
+    .find({
+      filename: req.params.filename
+    })
+    .toArray((err, files) => {
+      if (!files || files.length === 0) {
+        return res.status(404).json({
+          err: "no files exist"
+        });
+      }
+      gfs.openDownloadStreamByName(req.params.filename).pipe(res);
+    });
+});
 
-//   const file = gfs
-//     .find({
-//       filename: req.params.filename
-//     })
-//     .toArray((err, files) => {
-//       if (!files || files.length === 0) {
-//         return res.status(404).json({
-//           err: "no files exist"
-//         });
-//       }
-//       gfs.openDownloadStreamByName(req.params.filename).pipe(res);
-//     });
-// });
-
-
+*/
 
 
 // Connecting Routes
 //any request coming will be redirected to routes's auth
 app.use("/", require('./routes/index'));
-
-
+app.use("/firstTimeLogin", require('./routes/firstTimeLogin'));
+app.use("/profileDetails", require('./routes/profileDetails'));
 
 
 const PORT = process.env.PORT || 5000;
