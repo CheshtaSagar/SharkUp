@@ -200,10 +200,21 @@ router.get("/investorProfile", (req, res) => {
       //if user logs in for the first time,redirect him to edit profile section
       res.redirect("/profileDetails/investorProfileDetails");
     else
+    {
+      Project.find().exec(function (err, projects) {
+        if (err) {
+          console.log(err);
+        } else {
+         
       res.render("investorDashboard", {
         user: req.user,
-        inv:docs
+        inv: docs,
+        projects:projects
       });
+    }
+
+  });
+}
 });
 
 
