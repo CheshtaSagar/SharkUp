@@ -3,6 +3,11 @@
 const mongoose = require("mongoose");
 
 const EntrepreneurSchema = new mongoose.Schema({
+  userDetails:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+         ref:'User'
+    },
   email: {
     type: String,
     required: true,

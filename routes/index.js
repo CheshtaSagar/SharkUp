@@ -14,8 +14,8 @@ const crypto = require("crypto"); //to generate file names
 // const Grid = require("gridfs-stream");
 const methodOverride = require("method-override");
 var auth = require('../config/auth');
-var isDeveloper = auth.isDeveloper;
-var isCompany = auth.isCompany;
+const Investor = require("../models/Investor");
+const Entrepreneur = require("../models/Entrepreneur");
 var isUser = auth.isUser;
 
 
@@ -123,7 +123,7 @@ router.post("/register", (req, res) => {
                   "success_msg",
                   "Registered Successfully and can log in "
                 );
-                res.redirect("/firstTimeLogin/firstLogin");
+                res.redirect("/login");
               })
               .catch((err) => console.log(err));
           })
@@ -156,30 +156,45 @@ router.post("/login", (req, res, next) => {
 
 
 
-//for portfolio page
+
 router.get("/entrepreneurProfile", function (req, res) {
-  res.render("entrepreneurProfile");
+
+ 
+  Entrepreneur.findOne({ userDetails: req.user._id }).exec(function (err, docs) {
+    if (err) {
+      console.log(err);
+    }
+    if (!docs)
+      //if user logs in for the first time,redirect him to edit profile section
+      res.redirect("/profileDetails/entrepreneurProfileDetails");
+    else
+      res.render("entrepreneurProfile", {
+        user: req.user,
+        
+      });
+  });
 });
+  
 
 
-
-//company main profile
 router.get("/investorProfile", (req, res) => {
  
+  Investor.findOne({ userDetails: req.user._id }).exec(function (err, docs) {
+    if (err) {
+      console.log(err);
+    }
+    if (!docs)
+      //if user logs in for the first time,redirect him to edit profile section
+      res.redirect("/profileDetails/investorProfileDetails");
+    else
       res.render("investorProfile", {
+        user: req.user,
         
       });
 });
 
 
-
-
-
-
-
-
-
-
+});
 
 
 
