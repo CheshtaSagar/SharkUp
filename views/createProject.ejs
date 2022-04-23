@@ -85,7 +85,27 @@
                                                 for="file">Choose
                                                 profile picture</label>
                                         </div>
+
                                         
+                                        <div class="custom-file">
+                                            <h6>Upload project presentation</h6>
+                                            <input type="file" data-file_types="ppt|pptx|pdf" class="custom-file-input"
+                                                id="file1" name="file1" onchange="readSingleFile1(this.files)">
+                                            <label class="custom-file-label" id="file-label1" style="border-radius:10px;"
+                                                for="file1">Choose
+                                                    file</label>
+                                        </div>
+
+                                        <div class="custom-file">
+                                            <h6>Upload project demo video</h6>
+                                            <input type="file" data-file_types="jpeg|jpg|png|mp4|mp3" class="custom-file-input"
+                                                id="file2" name="file2" onchange="readSingleFile2(this.files)">
+                                            <label class="custom-file-label" id="file-label2" style="border-radius:10px;"
+                                                for="file2">Choose
+                                                    file</label>
+                                        </div>
+
+
                                         <div class="form-group">
                                             <label for="description">Description</label>
                                             <textarea class="form-control ta editor" id="description" rows="5"
@@ -119,7 +139,7 @@
                                                 class="btn btn-primary btn-lg btn-block signup-btn">Submit</button>
                                         </div>
 
-                                        
+
                                 </form>
 
 
@@ -127,24 +147,16 @@
 
                         </div>
 
-
+ 
                     </div>
 
                     
-                    <div class="col-12 col-lg-6 col-md-12 col-sm-12"
-                    style="padding-top: 5px; padding-bottom: 5px; background-color:rgb(255, 234, 255);">
-
-
-                    <div class="bg" id="col1">
-                        </br>
                     
-
-                    </div>
 
 
                 </div>
 
-        
+        </div>
 
 
 
@@ -161,7 +173,15 @@
         document.getElementById("file-label").textContent = name;
     }
 
-   
+    function readSingleFile1(e) {
+        const name = e[0].name;
+        document.getElementById("file-label1").textContent = name;
+    }
+
+    function readSingleFile2(e) {
+        const name = e[0].name;
+        document.getElementById("file-label2").textContent = name;
+    }
    
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

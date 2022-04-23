@@ -16,6 +16,7 @@ const methodOverride = require("method-override");
 var auth = require('../config/auth');
 const Investor = require("../models/Investor");
 const Entrepreneur = require("../models/Entrepreneur");
+const Project = require("../models/Project");
 var isUser = auth.isUser;
 
 
@@ -157,7 +158,7 @@ router.post("/login", (req, res, next) => {
 
 
 
-router.get("/entrepreneurProfile", function (req, res) {
+router.get("/entrepreneurProfile", (req, res) =>{
 
  
   Entrepreneur.findOne({ userDetails: req.user._id }).exec(function (err, docs) {
@@ -168,11 +169,23 @@ router.get("/entrepreneurProfile", function (req, res) {
       //if user logs in for the first time,redirect him to edit profile section
       res.redirect("/profileDetails/entrepreneurProfileDetails");
     else
+    {
+
+      Project.find({ contributors : { $in: [docs._id]  }}).populate("contributors").exec(
+        function (err, projects) {
+
+          if(err)
+          console.log(err);
+          else
       res.render("entrepreneurDashboard", {
         user: req.user,
-        
+        entr: docs,
+        projects: projects
       });
-  });
+    });
+  }
+});
+
 });
   
 
@@ -189,7 +202,7 @@ router.get("/investorProfile", (req, res) => {
     else
       res.render("investorDashboard", {
         user: req.user,
-        
+        inv:docs
       });
 });
 

@@ -24,6 +24,11 @@ const ProjectSchema = new mongoose.Schema({
          }
       
     },
+    createdBy:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Entrepreneur'
+    },
     projectPicture:
     {
         picture:{
