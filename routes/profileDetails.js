@@ -18,8 +18,7 @@ const methodOverride = require("method-override");
 var auth = require('../config/auth');
 const upload = require("../config/multer");
 const cloudinary = require("../config/cloudinary");
-var isDeveloper = auth.isDeveloper;
-var isCompany = auth.isCompany;
+
 var isUser = auth.isUser;
 
 
