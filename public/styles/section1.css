@@ -1,0 +1,52 @@
+.banner-section{
+    /* padding: 120px 0 700px; */
+    height: 900px;
+    background: url(https://template.viserlab.com/hyion/demo/assets/images/about/bg.png);
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: bottom;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.banner-section .img1 {
+    position: absolute;
+    right: 10%;
+
+}
+
+/* div.imageanimate1{
+    animation-duration: 12s;
+    animation-name: imageanimate1;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes imageanimate1 {
+    0% { left: 0px; top: 0px;}
+  25% {  left:100px; top:0px;}
+  50% {  left:0px; top:0px;}
+  75% { left:100px; top:0px;}
+  100% { left:0px; top:0px;}
+  } */
+
+.banner-section .img2 {
+    position: absolute;
+    right: 10%;
+
+}
+
+img.imageanimate2{
+    animation-duration: 8s;
+    animation-name: imageanimate2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes imageanimate2 {
+    0% { left: 30%; top: 600px;}
+  25% {  left:30%; top:580px;}
+  50% {  left:30%; top: 600px;}
+  75% { left:30%; top:580px;}
+  100% { left:30%; top:600px;}
+  }

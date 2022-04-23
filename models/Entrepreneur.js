@@ -1,37 +1,37 @@
-//User Schema
+// //User Schema
 
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const EntrepreneurSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-      },
+// const EntrepreneurSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true
+//       },
     
      
     
-      website: {
-        type: String
-      },
+//       website: {
+//         type: String
+//       },
     
-      photo: {
-        type: String
-      },
+//       photo: {
+//         type: String
+//       },
     
-      bio: {
-        type: String
-      },
+//       bio: {
+//         type: String
+//       },
     
-      address: {
-        type: String
-      },
+//       address: {
+//         type: String
+//       },
     
-    //   backedProjects: [{
-    //     type: _mongoose2.default.Schema.Types.ObjectId,
-    //     ref: 'Project'
-    //   }],
-});
+//     //   backedProjects: [{
+//     //     type: _mongoose2.default.Schema.Types.ObjectId,
+//     //     ref: 'Project'
+//     //   }],
+// });
 
-const User = mongoose.model("Entrepreneur", UserSchema);
+// const User = mongoose.model("Entrepreneur", EntrepreneurSchema);
 
-module.exports = Entrepreneur;
+// module.exports = Entrepreneur;
