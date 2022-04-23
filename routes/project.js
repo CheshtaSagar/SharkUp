@@ -30,16 +30,22 @@ router.get("/createProject", function (req, res) {
 
 
 //for saving investor's data after first login
-router.post("/createProject", upload.single("file"), async(req, res) =>{
+router.post("/createProject", upload.fields([
+  { name: "file", maxCount: 1 },
+  { name: "file1", maxCount: 1 },
+  { name: "file2", maxCount: 1 },
+]), async(req, res) =>{
   
   let errors=[];
   
   const {name, shortBrief, description, amount, equity, contributors} = req.body;
 
-  if (!name || !shortBrief || !description|| !req.file || !amount || !equity  ) {
+  if (!name || !shortBrief || !description||!amount || !equity  ) {
       errors.push({ msg: "Please enter all fields" });
     }
-  
+    if (!req.files["file"] || !req.files["file1"] || !req.files["file2"] ) {
+      errors.push({ msg: "Please upload all images" });
+    }
     if (errors.length > 0) {
       res.render("createProject", {
         errors, //    if entries are not according to validation render filled fields
@@ -51,9 +57,17 @@ router.post("/createProject", upload.single("file"), async(req, res) =>{
 
   
   let contri=contributors.split(',');
-  
+  contri.push(req.user.email);
+
   console.log(contri);
-  const result = await cloudinary.uploader.upload(req.file.path);
+
+  const docs = await Entrepreneur.find({ email: { $in: contri }});
+  const curEntr=await Entrepreneur.findOne({ userDetails: req.user });
+  const result1 = await cloudinary.uploader.upload(req.files["file"][0].path);
+
+  const result2= await cloudinary.uploader.upload(req.files["file1"][0].path);
+
+  const result3= await cloudinary.uploader.upload(req.files["file2"][0].path);
 
   const project = new Project({
       name: name,
@@ -65,17 +79,29 @@ router.post("/createProject", upload.single("file"), async(req, res) =>{
       },
       projectPicture: 
       {
-          picture:result.secure_url,
-          cloudinary_id:result.public_id
+          picture:result1.secure_url,
+          cloudinary_id:result1.public_id
        } ,
-      
+       demo:
+       {
+         video:result2.secure_url,
+         cloudinary_id:result2.public_id
+
+       },
+       ppt:{
+         presentation:result3.secure_url,
+         cloudinary_id:result3.public_id
+       },
+
+      createdBy: curEntr.id,
+      contributors:docs
        
     });
      
   project.save().then((user) => {
       req.flash("success_msg", "Project created");
-      //res.redirect(""); //include msg.ejs wherever you want to see this msg
-      console.log("successfully created");
+      res.redirect("/dashboard/entrepreneurDashboard"); //include msg.ejs wherever you want to see this msg
+      console.log("project successfully created");
   });
 
 }
@@ -85,6 +111,8 @@ router.post("/createProject", upload.single("file"), async(req, res) =>{
 );  
 
  
+
+
 
 
 module.exports = router;
