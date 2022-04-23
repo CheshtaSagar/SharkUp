@@ -56,7 +56,7 @@ const ProjectSchema = new mongoose.Schema({
     description:{
       type: String,
     },
-    contibutors:
+    contributors:
     [{
              type: mongoose.Schema.Types.ObjectId,
              ref: 'Entrepreneur'
