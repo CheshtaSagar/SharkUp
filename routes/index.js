@@ -1,20 +1,4 @@
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
@@ -46,6 +30,9 @@ router.get("/", (req, res) => {
 router.get("/login", function (req, res) {
   res.render("login");
 });
+
+
+
 
 //register
 router.get("/register", function (req, res) {
@@ -136,7 +123,7 @@ router.post("/register", (req, res) => {
                   "success_msg",
                   "Registered Successfully and can log in "
                 );
-                res.redirect("/login");
+                res.redirect("/firstTimeLogin/firstLogin");
               })
               .catch((err) => console.log(err));
           })
@@ -146,6 +133,9 @@ router.post("/register", (req, res) => {
   }
 });
 
+
+
+
 //login handling
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
@@ -154,14 +144,6 @@ router.post("/login", (req, res, next) => {
     failureFlash: true,
   })(req, res, next);
 });
-
-
-
-
-
-
-
-
 
 
   router.get("/profile", (req, res) => {
