@@ -21,6 +21,7 @@ const Investor = require("../models/Investor");
 const Entrepreneur = require("../models/Entrepreneur");
 
 
+
 //first time login
 router.get("/investorProfileDetails", function (req, res) {
     res.render("investorProfileDetails");
@@ -72,7 +73,7 @@ router.post("/investorProfileDetails", upload.single("file"), async(req, res) =>
        
     investor.save().then((user) => {
         req.flash("success_msg", "Profile completed ");
-        //res.redirect("/"); //include msg.ejs wherever you want to see this msg
+        res.redirect("/dashboard/investorDashboard"); //include msg.ejs wherever you want to see this msg
         console.log("successfully posted");
     });
 
@@ -85,9 +86,11 @@ router.post("/investorProfileDetails", upload.single("file"), async(req, res) =>
 router.post("/entrepreneurProfileDetails", upload.single("file"), async(req, res) =>{
   
   let errors=[];
+  
+  const {email, name, bio, aadhar, pan, website } = req.body;
 
-  if (!req.body.email || !req.body.name || !req.body.bio|| !req.file || !req.body.aadhar || !req.body.pan || 
-      !req.body.areaOfExpertise ) {
+  if (!email || !name || !bio|| !req.file || !aadhar || !pan || 
+      !website ) {
       errors.push({ msg: "Please enter all fields" });
     }
   
@@ -101,13 +104,13 @@ router.post("/entrepreneurProfileDetails", upload.single("file"), async(req, res
   {
   const result = await cloudinary.uploader.upload(req.file.path);
 
-  /*const investor = new Investor({
-      name: req.body.name,
-      email: req.body.email,
-      aadhar: req.body.aadhar,
+  const entrepreneur = new Entrepreneur({
+      name: name,
+      email: email,
+      aadhar: aadhar,
       userDetails:req.user,
-      pan: req.body.pan,
-      areaOfExpertise: req.body.areaOfExpertise,
+      pan: pan,
+      website: website,
       displayPicture: 
       {
           image:result.secure_url,
@@ -116,12 +119,12 @@ router.post("/entrepreneurProfileDetails", upload.single("file"), async(req, res
       bio:req.body.bio, 
     });
      
-  investor.save().then((user) => {
+  entrepreneur.save().then((user) => {
       req.flash("success_msg", "Profile completed ");
-      //res.redirect("/"); //include msg.ejs wherever you want to see this msg
-      console.log("successfully posted");
+      res.redirect("/dashboard/entrepreneurDashboard"); //include msg.ejs wherever you want to see this msg
+      console.log("successfully created");
   });
-*/
+
 }
 }
 

@@ -1,7 +1,8 @@
 .banner-section{
     /* padding: 120px 0 700px; */
     height: 900px;
-    background: url(https://template.viserlab.com/hyion/demo/assets/images/about/bg.png);
+    /* background: url(https://template.viserlab.com/hyion/demo/assets/images/about/bg.png); */
+    background: url(https://demo.xpeedstudio.com/html/fundpress/assets/images/welcome-bg.png);
     background-repeat: no-repeat;
     position: relative;
     background-position: bottom;

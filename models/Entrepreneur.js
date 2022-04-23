@@ -12,21 +12,37 @@ const EntrepreneurSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref:'User'
     },
-     
+    email:
+    {
+      type:String,
+    },
+    rating:
+    {
+     type:Number,
+     default:2,
+    },
+    displayPicture:
+    {
+        image:{
+           type: String,
+        },
+        cloudinary_id:{
+           type:String,
+        }
+    },
+
+    aadhar:{
+      type: String,
+      required: true,
+    },
+    pan:{
+      type: String,
+    },
+    bio:{
+      type: String,
+    },
     
       website: {
-        type: String
-      },
-    
-      photo: {
-        type: String
-      },
-    
-      bio: {
-        type: String
-      },
-    
-      address: {
         type: String
       },
     
