@@ -36,6 +36,6 @@ const EntrepreneurSchema = new mongoose.Schema({
     //   }],
 });
 
-const User = mongoose.model("Entrepreneur", EntrepreneurSchema);
+const Entrepreneur = mongoose.model("Entrepreneur", EntrepreneurSchema);
 
 module.exports = Entrepreneur;
