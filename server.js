@@ -100,7 +100,7 @@ app.get("/image/:filename", (req, res) => {
 app.use("/", require('./routes/index'));
 app.use("/firstTimeLogin", require('./routes/firstTimeLogin'));
 app.use("/profileDetails", require('./routes/profileDetails'));
-app.use("/projects", require('./routes/projects'));
+app.use("/project", require('./routes/project'));
 app.use("/dashboard", require('./routes/dashboard'));
 
 

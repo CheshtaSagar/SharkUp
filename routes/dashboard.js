@@ -15,7 +15,7 @@ router.get("/investorDashboard", function (req, res) {
 
  
 router.get("/entrepreneurDashboard", function (req, res) {
-    res.render("entreDash");
+    res.render("entrepreneurDashboard");
   });
 
 
