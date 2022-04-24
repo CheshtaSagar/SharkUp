@@ -134,6 +134,10 @@ router.get("/publicProject/:id", function (req, res) {
   
 });
 
+router.get("/entrProject/:id", function (req, res) {
+  res.render("project");
+});
+
 
 
 module.exports = router;

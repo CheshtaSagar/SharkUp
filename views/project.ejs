@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard </title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="/public/styles//entreDash.css" type="text/css">
+    <link rel="stylesheet" href="/styles/entreDash.css" type="text/css">
 </head>
 
 <body>
@@ -123,13 +123,14 @@
                         </div>
                         <div>
                             <div class="card">
+                                <%- include ('partials/toggleimg') %>
                                 <img class="card-img-top" src="..." alt="Card image cap" style="height: 800px;">
                                 <div class="card-body">
 
                                     <h3 class="card-title" style="padding-top: 30px;"> Brief Intro</h3>
                                     <h4 class="card-text" style="font-weight:normal;">This is a wider card with supporting text below as a natural
                                         lead-in to additional content. This content is a little bit longer.</h4>
-                                        <h4 style="font-weight:normal;">ppt link:-</h4>
+                                        <h4 style="font-weight:normal;">ppt link:<%= project.ppt %> -</h4>
                                     <h3 class="card-title " style="padding-top: 30px;"> Description</h3>
                                         <h4 class="card-text" style="font-weight:normal;">   Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium architecto
                                             eaque maiores numquam modi quod velit qui laboriosam mollitia debitis cum
