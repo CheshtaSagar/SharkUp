@@ -111,7 +111,9 @@ router.post("/createProject", upload.fields([
 );  
 
  
-
+router.get("/publicProject/:id", function (req, res) {
+  res.render("publicProject");
+});
 
 
 
