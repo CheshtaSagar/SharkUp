@@ -18,10 +18,18 @@ router.get("/investorDashboard", function (req, res) {
     }
     else
     {
+      Project.find().exec(function (err, projects) {
+        if (err) {
+          console.log(err);
+        } else {
+         
       res.render("investorDashboard", {
         user: req.user,
-        inv: docs
+        inv: docs,
+        projects:projects
       });
+    }
+  });
     }
 
   });

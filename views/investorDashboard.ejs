@@ -81,7 +81,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/logout">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -169,68 +169,23 @@
                         <thead>
                             <tr>
                                 <td>Name</td>
-                                <td>Price</td>
-                                <td>Deal</td>
-                                <td>Status</td>
+                                <td>Raise</td>
+                                <td>Equity</td>
+                                <td></td>
                             </tr>
                         </thead>
 
                         <tbody>
+                            <% projects.forEach(function(project){ %>
                             <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
+                                <td><%= project.name %></td>
+                                <td><%= project.basicDeal.amount %></td>
+                                <td><%= project.basicDeal.equity %></td>
+                                <td><span class="status delivered"><a href="#">See More</a></span></td>
                             </tr>
+                            <%});%>
 
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
