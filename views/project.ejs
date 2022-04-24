@@ -22,7 +22,7 @@
                             <span class="icon">
                                 <ion-icon name="logo-apple"></ion-icon>
                             </span>
-                            <span class="title">Name</span>
+                            <span class="title"><%= project.name %></span>
                         </a>
                     </li>
 
@@ -117,7 +117,7 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2>Projects title</h2>
+                            <h2><%= project.name %></h2>
                             <!-- <a href="#" class="btn">View All</a> -->
 
                         </div>
@@ -128,20 +128,10 @@
                                 <div class="card-body">
 
                                     <h3 class="card-title" style="padding-top: 30px;"> Brief Intro</h3>
-                                    <h4 class="card-text" style="font-weight:normal;">This is a wider card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</h4>
-                                        <h4 style="font-weight:normal;">ppt link:<%= project.ppt %> -</h4>
+                                    <h4 class="card-text" style="font-weight:normal;"><%= project.shortBrief%></h4>
+                                        <h4 style="font-weight:normal;">ppt link: <%= project.ppt.presentation %> -</h4>
                                     <h3 class="card-title " style="padding-top: 30px;"> Description</h3>
-                                        <h4 class="card-text" style="font-weight:normal;">   Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium architecto
-                                            eaque maiores numquam modi quod velit qui laboriosam mollitia debitis cum
-                                            tempora earum dolor nemo sint soluta dolorum optio tenetur necessitatibus, hic
-                                            aperiam adipisci nesciunt laborum ipsam? Repellendus vitae possimus eligendi
-                                            dolor suscipit commodi mollitia! Eos culpa explicabo rem eligendi laboriosam
-                                            beatae amet unde corporis, eius nesciunt atque obcaecati provident aperiam a
-                                            enim ut inventore temporibus, officiis sit eveniet suscipit at voluptates!
-                                            Voluptatem aspernatur et, nostrum corporis in nam. Assumenda, quae. Illum
-                                            corporis architecto debitis maxime labore excepturi culpa earum velit animi
-                                            temporibus, autem quisquam repudiandae omnis, alias, natus assumenda. </h4>
+                                        <h4 class="card-text" style="font-weight:normal;">  <%= project.description %></h4>
 
                                      
                                 </div>

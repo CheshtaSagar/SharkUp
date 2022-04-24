@@ -135,7 +135,25 @@ router.get("/publicProject/:id", function (req, res) {
 });
 
 router.get("/entrProject/:id", function (req, res) {
-  res.render("project");
+
+  Project.findOne({ id : req.params.id }).populate("contributors").exec(
+    function (err, projects) {
+
+      if(err)
+      console.log(err);
+      else
+      {
+
+        console.log("hi");
+        console.log(projects);
+  res.render("project", {
+    user: req.user,
+    project: projects
+  });
+
+}
+    })
+  
 });
 
 
