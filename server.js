@@ -102,6 +102,7 @@ app.use("/firstTimeLogin", require('./routes/firstTimeLogin'));
 app.use("/profileDetails", require('./routes/profileDetails'));
 app.use("/project", require('./routes/project'));
 app.use("/dashboard", require('./routes/dashboard'));
+app.use("/invest", require('./routes/invest'));
 
 
 const PORT = process.env.PORT || 5000;

@@ -112,7 +112,26 @@ router.post("/createProject", upload.fields([
 
  
 router.get("/publicProject/:id", function (req, res) {
-  res.render("publicProject");
+
+  Project.findOne({ id : req.params.id }).populate("contributors").exec(
+    function (err, projects) {
+
+      if(err)
+      console.log(err);
+      else
+      {
+
+        console.log("hi");
+        console.log(projects);
+  res.render("publicProject", {
+    user: req.user,
+    project: projects
+  });
+
+  
+}
+});
+  
 });
 
 
